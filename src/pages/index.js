@@ -1,17 +1,27 @@
-import styles from './index.css';
+import router from 'umi/router'
+import instance from '../network'
+import {connect} from 'dva'
 
-export default function() {
+function Main(props) {
+  if (!props.userId) {
+    instance.get('user/get_token').then(res => {
+      if (res.code === 200 && res.result.userId) {
+        props.dispatch({type: 'user/info', userId: res.result.userId})
+        router.push('/')
+      } else {
+        router.push('/login')
+      }
+    })
+  }
   return (
-    <div className={styles.normal}>
-      <div className={styles.welcome} />
-      <ul className={styles.list}>
-        <li>To get started, edit <code>src/pages/index.js</code> and save to reload.</li>
-        <li>
-          <a href="https://umijs.org/guide/getting-started.html">
-            Getting Started
-          </a>
-        </li>
-      </ul>
+    <div>
+      main
     </div>
   );
 }
+function mapStateToProps(state) {
+  return {
+    userId: state.user.userId
+  }
+}
+export default connect(mapStateToProps)(Main);

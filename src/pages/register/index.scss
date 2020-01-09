@@ -1,0 +1,13 @@
+@import '../login/index.scss';
+.container-register {
+    .row {
+      input {
+        padding: 10px 0 10px 65px;
+      }
+      .input-tip {
+        position: absolute;
+        left: 30px;
+        top: 9px;
+      }
+    }
+}

@@ -1,7 +1,32 @@
-html, body, #root {
+body, textarea, input, button, select, keygen, legend {
+  outline: 0;
+}
+html, body {
+  height: 100%;
+  border: 0;
+  background-color: #f5f5f5;
+  color: #666;
+  font-size: 12px;
+}
+html, body, h1, h2, h3, h4, h5, h6, div, dl, dt, dd, ul, ol, li, p, blockquote, pre, hr, figure, table, caption, th, td, form, fieldset, legend, input, button, textarea, menu {
+  margin:0;
+  padding: 0;
+}
+#root, #App {
   height: 100%;
 }
-
-body {
-  margin: 0;
+.box-sizing {
+  box-sizing: border-box;
+}
+.hide {
+  display: none !important;
+}
+.gray {
+  color: gray;
+}
+.blue {
+  color: #0888ff;
+}
+li {
+  list-style: none;
 }
