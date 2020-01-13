@@ -4,6 +4,7 @@ import router from 'umi/router'
 import styles from './index.scss'
 import instance from '../../network'
 import {connect} from 'dva'
+import {Icon} from 'antd'
 
 class Login extends React.Component {
   constructor(props) {
@@ -43,13 +44,15 @@ class Login extends React.Component {
         <form onSubmit={this.handleSubmit}>
           <div className={styles.row}>
             <span className={styles.icon}>
-              <i className={`${styles.fa} ${'fa fa-user'}`}></i>
+              {/* <i className={`${styles.fa} ${'fa fa-user'}`}></i> */}
+              <Icon type="user" className={`${styles.fa}`}/>
             </span>
             <input type="text" value={this.state.name} name="name" onChange={this.handleChange}/>
           </div>
           <div className={styles.row}>
             <span className={styles.icon}>
-              <i className={`${styles.fa} ${'fa fa-lock'}`}></i>
+              <Icon type="lock" className={styles.fa} />
+              {/* <i className={`${styles.fa} ${'fa fa-lock'}`}></i> */}
               <input type="password" value={this.state.password} name="password" onChange={this.handleChange}/>
             </span>
           </div>

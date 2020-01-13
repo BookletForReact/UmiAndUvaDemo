@@ -8,7 +8,9 @@
     "precommit": "lint-staged"
   },
   "dependencies": {
+    "antd": "^3.26.6",
     "axios": "^0.19.0",
+    "babel-plugin-import": "^1.13.0",
     "dva": "^2.6.0-beta.6",
     "node-sass": "^4.13.0",
     "react": "^16.8.6",
