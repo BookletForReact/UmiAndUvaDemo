@@ -1,27 +1,16 @@
-import router from 'umi/router'
-import instance from '../network'
-import {connect} from 'dva'
+
+import LeftPanel from './components/leftPanel'
+import RightPanel from './components/rightPanel'
+import styles from  './index.scss';
 
 function Main(props) {
-  if (!props.userId) {
-    instance.get('user/get_token').then(res => {
-      if (res.code === 200 && res.result.userId) {
-        props.dispatch({type: 'user/info', userId: res.result.userId})
-        router.push('/')
-      } else {
-        router.push('/login')
-      }
-    })
-  }
   return (
-    <div>
-      main
+    <div className={`${styles.mainWrapper} ${'box-sizing'}`}>
+      <LeftPanel>
+      </LeftPanel>
+      <RightPanel></RightPanel>
     </div>
   );
 }
-function mapStateToProps(state) {
-  return {
-    userId: state.user.userId
-  }
-}
-export default connect(mapStateToProps)(Main);
+
+export default Main

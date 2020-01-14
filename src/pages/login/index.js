@@ -29,7 +29,7 @@ class Login extends React.Component {
       password: this.state.password
     }).then(res => {
       this.props.dispatch({type: 'user/info', userId: res.result.id})
-      router.push('/main')
+      router.push('/')
     }).catch(e => {
       this.setState({
         wrongPassword: true

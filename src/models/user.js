@@ -3,13 +3,11 @@ export default {
   state: {},
   reducers: {
     info(state, {userId}) {
-      console.log(state, userId)
-      return {userId}
+      return Object.assign(state, {userId})
     },
     // 用户信息：性别、昵称、手机号、头像等
-    userInfo(state, userInfo) {
-      console.log(state, userInfo)
-      return {userInfo}
+    userInfo(state, {userInfo}) {
+      return Object.assign(state, {userInfo: userInfo})
     }
   }
 }
