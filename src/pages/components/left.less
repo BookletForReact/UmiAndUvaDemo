@@ -1,0 +1,263 @@
+/* 模态框 */
+:global {
+.mask {
+  position: fixed;
+  top:0;
+  bottom: 0;
+  left:0;
+  right:0;
+  background: rgba(0,0,0,0.65);
+}
+.modal-default {
+  position: absolute;
+  top:50%;
+  left:50%;
+  transform: translate(-50%, -50%)
+}
+.title-default {
+  height: 50px;
+  line-height: 50px;
+  padding: 0 10px;
+  background: #e5f4ff;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+  color: #666;
+}
+.icon-close {
+  font-size: 20px;
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  cursor: pointer;
+}
+
+
+.btns-default {
+  position: absolute;
+  bottom: 0;
+  padding: 22px 0;
+  width: 100%;
+  border-top: 1px solid #e0e6eb;
+  text-align: center;
+}
+.btns-default .btn {
+  font-size: 16px;
+  border-radius: 4px;
+  width: 100px;
+  line-height: 34px;
+  color: #fff;
+  cursor: pointer;
+}
+.btns-default .btn-cancel {
+  border: 1px solid #ccc;
+  background-color: #eee;
+  color: #666;
+  margin-right: 14px;
+}
+.btns-default .btn-ok {
+  background-color: #0888ff;
+  border: 1px solid #0070d9;
+}
+.add-friend {
+  width: 400px;
+  height: 250px;
+  background-color: #fff;
+  border-radius: 5px;
+}
+.add-friend .content {
+  padding-top: 20px;
+  position: relative;
+  text-align: center;
+}
+.add-friend .content .add-input {
+  height: 34px;
+  width: 300px;
+  border: 1px solid #e0e6eb;
+  font-size: 14px;
+  padding: 0 15px;
+}
+.add-friend .content .user-info {
+  display: flex;
+  padding: 0 30px;
+}
+.add-friend .content .user-info img {
+  display: inline-block;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+}
+.add-friend .content .user-info .user-desc {
+  flex: 1 1;
+  text-align: left;
+  padding: 8px;
+  margin-left: 15px;
+  color: #333;
+  font-size: 14px;
+}
+.add-group {
+  width: 680px;
+  height: 600px;
+  background-color: #fff;
+  border-radius: 5px;
+}
+.add-group .group-name {
+  padding: 10px 30px;
+}
+.add-group .group-name input {
+  height: 34px;
+  width: 300px;
+  border: 1px solid #e0e6eb;
+  font-size: 14px;
+  padding: 0 15px;
+}
+.add-group .content {
+  display: flex;
+  border-top: 1px solid #ececec;
+}
+.add-group .content .user-list {
+  width: 448px;
+  height: 400px;
+  border-right: 1px solid #ececec;
+  padding: 20px;
+}
+.add-group .content .user-list ul li {
+  display: inline-block;
+  margin-bottom: 10px;
+  width: 190px;
+  margin-right: 10px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.add-group .content .user-list ul li img {
+  width: 40px;
+  height: 40px;
+  margin: 0 8px;
+  vertical-align: middle;
+  border-radius: 50%;
+}
+.add-group .content .added-list {
+  flex: 1 1;
+  height: 400px;
+  padding: 5px 10px;
+}
+.add-group .content .added-list ul {
+  padding: 20px;
+}
+.add-group .content .added-list ul li {
+  width: 50%;
+  display: inline-block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  text-align: center;
+  margin-bottom: 10px;
+}
+.add-group .content .added-list ul li img {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+}
+.user-info {
+  width: 400px;
+  height: 600px;
+  background-color: #fff;
+  border-radius: 5px;
+}
+.edit-user {
+  width: 400px;
+  height: 600px;
+  background-color: #fff;
+  border-radius: 5px;
+  color: #333;
+}
+.edit-user .u-info {
+  padding: 30px;
+  border-bottom: 1px solid #e4e9ee;
+  display: flex;
+}
+.edit-user .u-info .u-icon {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+}
+.edit-user .u-info .desc {
+  flex: 1 1;
+  margin-left: 20px;
+  margin-top: 20px;
+  font-size: 16px;
+  line-height: 20px;
+  height: 40px;
+}
+.edit-user .u-info .desc p {
+  max-width: 200px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.edit-user .u-info .desc p.nickname {
+  color: #3a4a59;
+}
+.edit-user .u-info .desc p.account {
+  color: #6b8299;
+  font-size: 12px;
+}
+.edit-user .infos {
+  position: relative;
+  padding: 30px;
+}
+.edit-user .infos .operate {
+  position: absolute;
+  right: 30px;
+  top: 30px;
+}
+.edit-user .infos .operate span {
+  display: inline-block;
+  border: 1px solid #e4e9ee;
+  border-radius: 8px;
+  padding: 2px 8px;
+  background: #fff;
+  margin-left: 10px;
+  cursor: pointer;
+}
+.edit-user .infos .operate span.save {
+  background: #238efa;
+  color: #fff;
+}
+.edit-user .infos .operate span.cancel {
+  background: #eee;
+  color: #3a4a59;
+}
+.edit-user .infos .showInfo .items {
+  height: 22px;
+  line-height: 14px;
+  font-size: 14px;
+  padding: 4px 0;
+  margin-top: 10px;
+  display: flex;
+}
+.edit-user .infos .showInfo .items .item {
+  width: 50px;
+}
+.edit-user .infos .showInfo .items .item-value {
+  flex: 1 1;
+}
+.edit-user .infos .editInfo .items input {
+  width: 170px;
+  padding: 0 10px;
+  height: 24px;
+  border: 1px solid #e4e9ee;
+  line-height: 24px;
+  font-size: 14px;
+}
+.edit-user .infos .editInfo .items select {
+  display: inline-block;
+  border: 1px solid #e4e9ee;
+  line-height: 14px;
+  font-size: 14px;
+  width: 60px;
+}
+.hide {
+  display: none !important;
+}
+}

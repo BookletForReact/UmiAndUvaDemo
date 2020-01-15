@@ -1,6 +1,9 @@
 export default {
   namespace: 'user',
-  state: {},
+  state: {
+    userId: '',
+    userInfo: {}
+  },
   reducers: {
     info(state, {userId}) {
       return Object.assign(state, {userId})

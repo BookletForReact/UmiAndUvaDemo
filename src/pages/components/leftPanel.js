@@ -4,12 +4,15 @@ import instance from '../../network'
 import {connect} from 'dva'
 import styles from './left.scss'
 import {Icon} from 'antd'
+import EditUser from './editUser'
+import './left.less'
 
 class LeftPanel extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
       userInfo: {},
+      showEditUser: false
     }
   }
 
@@ -48,6 +51,7 @@ class LeftPanel extends React.Component {
     })
   }
   closeEditUser = () => {
+    console.log(2222)
     this.setState({
       showEditUser: false
     })
@@ -79,6 +83,9 @@ class LeftPanel extends React.Component {
           
         </div>
         <div className={`${styles.item}`}></div>
+        <div>
+          {this.state.showEditUser && (<EditUser origin={this.state.userInfo} onInfoChange={this.getUserInfo} onClose={this.closeEditUser}/>)}
+        </div>
       </div>
     )
   }
