@@ -1,41 +1,35 @@
 import React from 'react'
 import Link from 'umi/link'
-import router from 'umi/router'
 import styles from './index.scss'
-import instance from '../../network'
 import {connect} from 'dva'
 import {Icon} from 'antd'
+
+const namespace = 'user'
 
 class Login extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
       name: '',
-      password: '',
-      wrongPassword: false
+      password: ''
     }
   }
 
   handleChange = (event) => {
+    const { target } = event
     this.setState({
-      [event.target.name]: event.target.value
+      [target.name]: target.value
     })
   }
 
-  handleSubmit = (event) => {
-    instance.post('/user/login', {
+  handleSubmit = event => {
+    event.preventDefault()
+    const payload = {
       region: '86',
       phone: this.state.name,
       password: this.state.password
-    }).then(res => {
-      this.props.dispatch({type: 'user/info', userId: res.result.id})
-      router.push('/')
-    }).catch(e => {
-      this.setState({
-        wrongPassword: true
-      })
-    })
-    event.preventDefault()
+    }
+    this.props.dispatch({type: 'user/login', payload})
   }
 
   render() {
@@ -57,7 +51,7 @@ class Login extends React.Component {
             </span>
           </div>
           <div className={styles.row}>
-            <div className={`${styles['error-msg']} ${this.state.wrongPassword ? '' : styles.hide}`}>密码错误</div>
+            <div className={`${styles['error-msg']} ${this.props.wrongPassword ? '' : styles.hide}`}>密码错误</div>
           </div>
           <div className={styles.row}>
             <input type="submit" className={`${styles.btn} ${styles['btn-login']}`} vlaue="登录"/>
@@ -68,10 +62,5 @@ class Login extends React.Component {
     )
   }
 }
-function mapStateToProps(state) {
-  return {
-    userId: state.user.userId
-  }
-}
-export default connect(mapStateToProps)(Login);
-// export default Login
+
+export default connect((state) => state[namespace])(Login)

@@ -1,7 +1,8 @@
 import React from 'react'
 import router from 'umi/router'
 import styles from './index.scss'
-import instance from '../../network'
+// import instance from '../../network'
+import API from '@/network/api'
 import { connect } from 'dva'
 
 class Main extends React.Component {
@@ -17,30 +18,28 @@ class Main extends React.Component {
         this.getUserInfo();
     }
 
-    getUserInfo = () => {
-        instance.get(`/user/${this.props.userId}`).then((res) => {
-            console.log(res);
-            const {
-                nickname,
-                portraitUri,
-                gender,
-                phone,
-            } = res.result;
-            console.log(`${nickname} ${portraitUri} ${gender} ${phone}`);
-            this.props.dispatch({type: 'user/userInfo'});
-        }).catch(e => {
-        })
+    getUserInfo = async () => {
+        const res = await API.getUserId(this.props.userId)
+        const {
+            nickname,
+            portraitUri,
+            gender,
+            phone,
+        } = res.result;
+        console.log(`${nickname} ${portraitUri} ${gender} ${phone}`);
+        this.props.dispatch({type: 'user/userInfo'});
     }
   
-    handleLogout = (event) => {
-        instance.post('/user/logout').then(() => {
+    handleLogout = async event => {
+        event.preventDefault()
+        try {
+            await API.logout()
             router.push('/login')
-        }).catch(e => {
+        } catch (error) {
             this.setState({
                 wrongPassword: true
             })
-        })
-        event.preventDefault()
+        }
     }
   
     render() {
