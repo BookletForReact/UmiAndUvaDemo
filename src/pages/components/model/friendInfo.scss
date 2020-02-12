@@ -1,0 +1,48 @@
+.friendInfo-body {
+  .friendInfo-top {
+    padding-bottom: 30px;
+    border-bottom: 1px solid #ddd;
+  }
+
+  .friendInfo-info {
+    padding: 20px 0;
+    border-bottom: 1px solid #ddd;
+    .friendInfo-info--p {
+      padding: 5px 0;
+      .friendInfo-info--title {
+        display: inline-block;
+        width: 15%;
+      }
+  
+      .friendInfo-info--input {
+        width: 60%;
+      }
+  
+      .friendInfo-info--btn {
+        margin-left: 20px;
+      }
+    }
+  }
+
+  .friendInfo-operate {
+    padding: 20px 0;
+    border-bottom: 1px solid #ddd;
+    .friendInfo-operate--p {
+      padding: 5px 0;
+    }
+
+    .friendInfo-info--switch {
+      float: right
+    }
+  }
+
+  .friendInfo-bottom {
+    margin-top: 30px;
+    text-align: center;
+    .friendInfo-bottom--send {
+      margin-left: 20px;
+    }
+  }
+}
+
+
