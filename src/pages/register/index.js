@@ -3,7 +3,7 @@ import router from 'umi/router'
 import Link from 'umi/link'
 import styles from './index.scss';
 
-import instance from '../../network'
+import instance from '@/network'
 
 class Register extends React.Component {
   constructor(props) {

@@ -1,5 +1,6 @@
 import React from 'react'
-import { Avatar, Modal, Row, Col, Input, Button, Switch } from 'antd'
+import API from '@/network/api'
+import { Avatar, Modal, Row, Col, Input, Button, Switch, message } from 'antd'
 import DeleteFriend from './deleteFriend'
 import style from './friendInfo.scss'
 
@@ -60,11 +61,21 @@ class FriendInfo extends React.Component {
     */
   }
 
+  addBlacklistFn = async (friendId) => {
+    const { data: { code, msg } } = await API.addBlacklist({ friendId })
+    if (code) return message.error(msg)
+    message.success('添加成功！')
+  }
+
+  removeBlacklistFn = async (friendId) => {
+    const { data: { code, msg } } = await API.removeBlacklist({ friendId })
+    if (code) return message.error(msg)
+    message.success('添加成功！')
+  }
+
   operateFn = (status, type) => {
-    /* TODO 
-     * fn POST /user/add_to_blacklist || POST /user/remove_from_blacklist
-     * params friendId
-    */
+    const { id } = this.state.profileInfo.user
+    status && type === 'blackList' ? this.addBlacklistFn(id) : this.removeBlacklist(id)
     this.setState((state) => ({
       profileInfo: Object.assign(state.profileInfo, { [type]: status })
     }))

@@ -1,7 +1,6 @@
 import React from 'react'
 import router from 'umi/router'
 import styles from './index.scss'
-// import instance from '../../network'
 import API from '@/network/api'
 import { connect } from 'dva'
 

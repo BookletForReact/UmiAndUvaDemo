@@ -1,6 +1,7 @@
 // 添加好友
-import { Modal, Button, Input } from 'antd'
+import { Modal, Button, Input, message } from 'antd'
 import React from 'react'
+import API from '@/network/api'
 
 class AddFriend extends React.Component {
   constructor(props) {
@@ -25,15 +26,20 @@ class AddFriend extends React.Component {
     })
   }
 
-  handleOk = () => { 
-    if (!this.state.account.trim()) {
+  addFriendFn = async () => {
+    const { account } = this.state
+    if (!account.trim()) {
+      alert('好友ID不能为空！')
       return false
     }
-    /* TODO
-     * fn POST /friendship/invite
-     * params friendId
-    */
-    alert(this.state.account)
+    if (account.length < 2 || account.length > 20) {
+      alert('好友ID长度在2～20位之间')
+      return false
+    }
+    // 如果通过验证，再继续进行调用接口操作
+    const { data: { code, msg } } = await API.addFriend({ friendId: account })
+    if (code) return message.error(msg)
+    message.success('添加成功！')
     this.initData()
   }
 
@@ -57,7 +63,7 @@ class AddFriend extends React.Component {
           width="25%"
           title="添加好友"
           visible={this.state.visible}
-          onOk={this.handleOk}
+          onOk={this.addFriendFn}
           onCancel={this.handleCancel}
           okText="确认"
           cancelText="取消"

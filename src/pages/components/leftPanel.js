@@ -1,9 +1,10 @@
 import router from 'umi/router'
 import React from 'react'
-import instance from '../../network'
 import {connect} from 'dva'
 import styles from './left.scss'
 import {Icon} from 'antd'
+import API from '@/network/api'
+import TabSplit from './tabSplit'
 
 class LeftPanel extends React.Component {
   constructor(props) {
@@ -13,31 +14,30 @@ class LeftPanel extends React.Component {
     }
   }
 
-  componentDidMount() {
+  async componentDidMount() {
     if (!this.props.user.userId) {
-      instance.get('user/get_token').then(res => {
-        if (res.code === 200 && res.result.userId) {
-          this.props.dispatch({type: 'user/info', userId: res.result.userId})
+      try {
+        const { code, result } = await API.getToken()
+        if (code === 200 && result.userId) {
+          this.props.dispatch({ type: 'user/info', userId: result.userId })
           this.getUserInfo()
         } else {
           router.push('/login')
         }
-      }).catch(() => {
-        router.push('/login')
-      })
+      } catch (error) {
+        // router.push('/login')
+      }
     } else {
       this.getUserInfo()
     }
   }
 
-  getUserInfo = () => {
-    instance.get(`/user/${this.props.user.userId}`).then((res) => {
-      this.setState({
-        userInfo: res.result
-      })
-      this.props.dispatch({type: 'user/userInfo', userInfo: res.result})
-    }).catch(e => {
+  getUserInfo = async () => {
+    const { result } = await API.getUserId(this.props.user.userId)
+    this.setState({
+      userInfo: result
     })
+    this.props.dispatch({ type: 'user/userInfo', userInfo: result })
 }
 
   
@@ -53,14 +53,11 @@ class LeftPanel extends React.Component {
     })
   }
   // 退出
-  userLogout = (e) => {
+  userLogout = async (e) => {
     e.preventDefault()
     this.props.dispatch({type: 'user/info', userId: ''})
-    instance.post('/user/logout').then(res => {
-      router.push('/login')
-    }).catch(() => {
-      router.push('/login')
-    })
+    await API.logout()
+    router.push('/login')
   }
   
   render() {
@@ -76,7 +73,7 @@ class LeftPanel extends React.Component {
           <a href="void(0);" onClick={this.userLogout} className={styles.exit}>退出</a>
         </div>
         <div className={styles.switchPanel}>
-          
+          <TabSplit></TabSplit>
         </div>
         <div className={`${styles.item}`}></div>
       </div>

@@ -1,6 +1,9 @@
 // 删除好友
-import { Modal, Button } from 'antd'
+import { Modal, Button, message } from 'antd'
 import React from 'react'
+import API from '@/network/api'
+
+const { confirm } = Modal
 
 class DeleteFriend extends React.Component {
   state = {
@@ -14,14 +17,21 @@ class DeleteFriend extends React.Component {
     })
   }
 
-  handleOk = () => {
-    /* TODO
-     * fn POST/friendship/delete
-     * params friendId
-    */
-    alert(this.state.account)
-    this.initData()
-  }
+  deleteFriendFn = async (friendId) => {
+    confirm({
+      title: '删除好友',
+      content: '是否要删除好友？',
+      okText: '确定',
+      cancelText: '取消',
+      async onOk() {
+        const { data: { code, msg } } = await API.addBlacklist({ friendId })
+        if(code) return message.error(msg)
+        message.success('删除成功！')
+        this.initData()
+    },
+      onCancel() {},
+    });
+}
 
   handleCancel = () => {
     this.setState({
@@ -40,7 +50,7 @@ class DeleteFriend extends React.Component {
           width="25%"
           title="提示"
           visible={visible}
-          onOk={this.handleOk}
+          onOk={this.deleteFriendFn}
           onCancel={this.handleCancel}
           okText="确认"
           cancelText="取消"
