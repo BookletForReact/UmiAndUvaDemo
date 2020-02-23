@@ -1,0 +1,55 @@
+:global {
+  .icon {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    background-image: url('~@/assets/images/icons.png');
+    background-repeat: no-repeat;
+    vertical-align: middle;
+  }
+  .tab {
+    position: relative;
+    display: flex;
+    width: 100%;
+    height: 34px;
+    border-bottom: 1px solid #ced4d9;
+    &-item {
+      position: relative;
+      flex: 1;
+      padding: 5px 0;
+      cursor: pointer;
+    }
+  }
+  .icon-session {
+    background-position: -35px 0;
+  }
+  .icon-friend {
+    background-position: -35px -25px;
+  }
+  .icon-team {
+    background-position: -35px -50px;
+  }
+  .current {
+    &:after {
+      content: '';
+      position: absolute;
+      bottom: -1px;
+      left: 37px;
+      width: 38px;
+      height: 8px;
+      background: url('~@/assets/images/icons.png') no-repeat -67px -170px;
+    }
+    .icon-session {
+      background-position: 0 0;
+    }
+    .icon-friend {
+      background-position: 0 -25px;
+    }
+    .icon-team {
+      background-position: 0 -50px;
+    }
+  }
+  .tab-content {
+    height: 400px;
+  }
+}
