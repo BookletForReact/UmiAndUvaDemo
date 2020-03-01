@@ -24,5 +24,33 @@ export default {
   },
   deleteFriend(data) {
     return instance.post('friendship/delete', data)
+  },
+  // 获取所有的好友
+  getAllFriends (params) {
+    return instance.get('/friendship/all', { params })
+  },
+  // 获取通讯录群组
+  getUserGroups (data) {
+    return instance.post('/user/favgroups', data)
+  },
+  // 同步用户的群组、群组成员数据
+  groupUserSyncInfo (version) {
+    return instance.post(`/user/sync/${version}`)
+  },
+  // 创建群组
+  createGroup (data) {
+    return instance.post('/group/create', data)
+  },
+  // 获取群成员信息
+  groupGetMemberInfo (data) {
+    return instance.post('/group/get_member_info', data)
+  },
+  // 添加群成员
+  groupAddMember (data) {
+    return instance.post('/group/add', data)
+  },
+  // 解散群组
+  groupDismiss (data) {
+    return instance.post('/group/dismiss', data)
   }
 }

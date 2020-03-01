@@ -3,9 +3,9 @@ import dayjs from 'dayjs'
 import './tab.scss'
 
 export default function Item(props) {
-  const { data } = props
+  const { data, itemClick } = props
   return (
-    <div className="tab_list-item">
+    <div className="tab_list-item" onClick={itemClick}>
       <div className="tab_list-item_icon">
         <img src={data.avatar} />
       </div>

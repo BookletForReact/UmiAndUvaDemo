@@ -73,6 +73,7 @@ class LeftPanel extends React.Component {
           <a href="void(0);" onClick={this.userLogout} className={styles.exit}>退出</a>
         </div>
         <TabSplit></TabSplit>
+        <div className={`${styles.item}`}></div>
       </div>
     )
   }
