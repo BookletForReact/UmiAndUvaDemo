@@ -2,13 +2,13 @@
 import { Modal, Checkbox, message } from 'antd'
 import React from 'react'
 import API from '@/network/api'
+import './addGroup.scss'
 
 class AddGroup extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
       visible: true,
-      account: '',
       userList: [], // 所有的好友
       addFriendIds: [], // 新建群组好友ID集合
       mockData: {	
@@ -54,8 +54,8 @@ class AddGroup extends React.Component {
     this.getAllFriend()
   }
 
+  // 获取所有的通讯录好友
   getAllFriend = async () => {
-    // 获取所有的通讯录好友
     const { code, result } = this.state.mockData // await API.getAllFriends()
     if (code === 200 && result.length > 0) {
       const userList = result.map((item) => {
@@ -71,26 +71,29 @@ class AddGroup extends React.Component {
     }
   }
 
-  initData = () => {
+  togglePane = () => {
+    const { visible } = this.state
     this.setState({
-      visible: false,
-      account: ''
+      visible: !visible
     })
   }
 
-  showModal = () => {
-    this.setState({
-      visible: true,
-      account: ''
-    })
-  }
-
+  // 创建群组
   addGroupFn = async () => {
-    this.props.okConfirm(this.state.addFriendIds)
+    // const { addFriendIds } = this.state
+    // const { code } = await API.createGroup({ memberIds: addFriendIds })
+    // if (code === 200) {
+    //   message.success('群组创建成功')
+    // } else {
+    //   message.error('创建群组失败')
+    // }
+    this.togglePane()
+    // 触发父元素的回调
+    this.props.okConfirm()
   }
 
   handleCancel = () => {
-    this.initData()
+    this.togglePane()
   }
   // 添加好友的ID
   onChange = (checkedValues) => {
@@ -102,17 +105,18 @@ class AddGroup extends React.Component {
   render() {
     const { userList } = this.state
     return (
-      <div>
+      <div className="add-group">
         <Modal
-          width="80%"
+          width="50%"
           title="添加成员"
           visible={this.state.visible}
           onOk={this.addGroupFn}
-          onCancel={this.handleCancel}
+          onCancel={this.togglePane}
           okText="确认"
           cancelText="取消"
+          wrapClassName="add-group-modal"
         >
-          <Checkbox.Group options={userList} onChange={this.onChange} />
+          <Checkbox.Group options={userList} onChange={this.onChange} />z
         </Modal>
       </div>
     )

@@ -1,6 +1,7 @@
 import {connect} from 'dva'
 import AddFriend from './model/addFriend'
 import FriendInfo from './model/friendInfo'
+import ChatBox from './model/chatBox'
 
 function Main() {
   // 接口貌似缺少部分字段信息 比如：邮箱号 消息提醒 黑名单状态等
@@ -24,6 +25,7 @@ function Main() {
     <div>
       <AddFriend></AddFriend>
       <FriendInfo infoData={mockInfoData}></FriendInfo>
+      <ChatBox></ChatBox>
     </div>
   )
 }

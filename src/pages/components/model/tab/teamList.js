@@ -58,8 +58,8 @@ export default class TeamList extends React.Component {
   }
   
   getUserGroups = async () => {
-    const { result } = await API.getUserGroups()
-    // const result = this.state.mockData.result
+    // const { result } = await API.getUserGroups()
+    const result = this.state.mockData.result
     const { list } = result
     const newList = list.map((item) => {
       item.avatar = item.portraitUri
@@ -87,14 +87,9 @@ export default class TeamList extends React.Component {
       showAddPane: !showAddPane
     })
   }
-  async createGroup(ids) {
-    debugger
-    const { code, result } = await API.createGroup({ memberIds: ids })
-    if (code === 200 && result.length > 0) {
-      message.success('群组创建成功')
-    } else {
-      message.error('创建群组失败')
-    }
+  async refreshList() {
+    this.togglePane()
+    this.getUserGroups()
   }
   render() {
     const { teamToolData, teamData, showAddPane } = this.state
@@ -112,7 +107,7 @@ export default class TeamList extends React.Component {
           ))
         }
         {
-          showAddPane ? <AddGroup okConfirm={() => this.createGroup()}></AddGroup> : null
+          showAddPane ? <AddGroup okConfirm={() => this.refreshList()}></AddGroup> : null
         }
       </>
     )

@@ -1,0 +1,60 @@
+:global {
+    .list {
+        height: 34px;
+        position: relative;
+        border-bottom: 1px solid #ced4d9;
+        display: flex;
+        width: 100%;
+        a {
+            display: inline-block;
+            flex: 1;
+            margin: 5px 0;
+            text-align: center;
+            position: relative;
+            .trangle {
+                position: absolute;
+                width: 0px;
+                height: 0px;
+                top: 24px;
+                left: 38px;
+                border-bottom: 5px solid #ced4d9;
+                border-left: 5px solid transparent;
+                border-right: 5px solid transparent;
+                &:after {
+                    content: '';
+                    position: absolute;
+                    top: 2px;
+                    left: -4px;
+                    border-bottom: 4px solid #ffffff;
+                    border-left: 4px solid transparent;
+                    border-right: 4px solid transparent;
+                }
+            }
+            i {
+                display: inline-block;
+                font-size: 16px;
+                width: 16px;
+                height: 16px;
+                background: url('../../../assets/images/icons.png') no-repeat center center;
+                &.fa-user-circle {
+                    background-position: -35px 0;
+                    &.blue {
+                        background-position: 0 0;
+                    }
+                }
+                &.fa-user {
+                    background-position: -35px -25px;
+                    &.blue {
+                        background-position: 0 -25px;
+                    }
+                }
+                &.fa-users {
+                    background-position: -35px -50px;
+                    &.blue {
+                        background-position: 0 -50px;
+                    }
+                }
+            }
+        }
+    }
+}
