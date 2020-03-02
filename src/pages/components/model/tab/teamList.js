@@ -1,12 +1,13 @@
-import { message } from 'antd'
+
+import { connect } from 'dva'
 import React from 'react'
 import Item from './item.js'
 import API from '@/network/api'
 import AddGroup from '../group/addGroup.js'
 
-export default class TeamList extends React.Component {
-  constructor () {
-    super()
+class TeamList extends React.Component {
+  constructor (props) {
+    super(props)
     // this.teamToolDataClicked = this.teamToolDataClicked.bind(this)
   }
   state = {
@@ -81,6 +82,10 @@ export default class TeamList extends React.Component {
         break;
     }
   }
+  // 某个群被点击
+  groupClicked = (id) => {
+    this.props.dispatch({ type: 'group/id', groupId: id })
+  }
   togglePane () {
     const { showAddPane } = this.state
     this.setState({
@@ -103,7 +108,7 @@ export default class TeamList extends React.Component {
         <div className="split-title">高级群</div>
         {
           teamData.map((item, index) => (
-            <Item key={index} data={item}></Item>
+            <Item key={index} data={item} itemClick={() => this.groupClicked(item.id)}></Item>
           ))
         }
         {
@@ -114,4 +119,9 @@ export default class TeamList extends React.Component {
   }
 }
 
-
+function mapStateToProps(state) {
+  return {
+    groupId: state.group.groupId
+  }
+}
+export default connect(mapStateToProps)(TeamList);
