@@ -1,0 +1,37 @@
+:global {
+    .friend-content {
+        .friend-item {
+            width: 60px;
+            height: 82px;
+            margin: 5px 25px;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            .img {
+                width: 56px;
+                height: 56px;
+            }
+            .icon-user {
+                background-position: -65px -142px;
+                position: absolute;
+                bottom: 36px;
+                right: 8px;
+                border: 1px solid #fff;
+                border-radius: 50%;
+            }
+            .hover {
+                position: absolute;
+                width: 56px;
+                height: 56px;
+                background-color: rgba(0, 0, 0, .75);
+                border-radius: 50%;
+                line-height: 56px;
+                color: #f24c3d;
+                top: 0;
+                left: 50%;
+                margin-left: -28px;
+                cursor: pointer;
+            }
+        }
+    }
+}

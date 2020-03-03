@@ -1,5 +1,3 @@
-import { stat } from "fs";
-
 export default {
   namespace: 'group',
   state: {

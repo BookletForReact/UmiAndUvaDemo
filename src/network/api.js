@@ -41,9 +41,25 @@ export default {
   createGroup (data) {
     return instance.post('/group/create', data)
   },
+  // 获取群信息
+  getGroupInfo (id) {
+    return instance.get(`/group/${id}`)
+  },
+  // 群组重命名
+  groupRename (data) {
+    return instance.post('/group/rename', data)
+  },
+  // 获取群成员
+  getGroupMemebers (id) {
+    return instance.get(`/group/${id}/members`)
+  },
   // 获取群成员信息
   groupGetMemberInfo (data) {
     return instance.post('/group/get_member_info', data)
+  },
+  // 群主或群管理将群成员移出群组
+  groupMemberKick (data) {
+    return instance.post('/group/kick', data)
   },
   // 添加群成员
   groupAddMember (data) {

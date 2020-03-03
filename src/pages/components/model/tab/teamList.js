@@ -72,6 +72,7 @@ class TeamList extends React.Component {
       teamData: newList
     })
   }
+
   teamToolDataClicked = (index) => {
     switch(index) {
       case 0:
@@ -86,6 +87,7 @@ class TeamList extends React.Component {
   groupClicked = (id) => {
     this.props.dispatch({ type: 'group/id', groupId: id })
   }
+
   togglePane () {
     const { showAddPane } = this.state
     this.setState({

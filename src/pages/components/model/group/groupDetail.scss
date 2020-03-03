@@ -1,0 +1,46 @@
+:global {
+    .group-info-detail {
+        padding: 30px;
+        .group-info-row {
+            display: flex;
+            justify-content: flex-start;
+            line-height: 24px;
+            height: 24px;
+            font-size: 14px;
+            color: #666;
+            &.with-img {
+                margin-bottom: 20px;
+                align-items: center;
+            }
+            img {
+                width: 40px;
+                height: 40px;
+                margin-right: 10px;
+            }
+            .ant-input {
+                height: 24px;
+                line-height: 24px;
+                border: none;
+                cursor: pointer;
+                padding: 0;
+                width: auto;
+                display: block;
+                &:focus {
+                    box-shadow: none;
+                    border: none;
+                }
+            }
+            .group-info-fixed-text {
+                display: block;
+                min-width: 30px;
+                margin-right: 30px;
+            }
+            .icon-write {
+                background-position: -62px -114px;
+                width: 20px;
+                height: 20px;
+                margin: 0 5px;
+            }
+        }
+    }
+}

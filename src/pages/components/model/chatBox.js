@@ -1,6 +1,5 @@
 // 聊天框
 import React from 'react'
-import API from '@/network/api'
 import './chatBox.scss'
 import GroupInfo from '../model/group/groupInfo'
 
@@ -27,7 +26,7 @@ class ChatBox extends React.Component {
         </div>
         {
             showInfo ? 
-                <GroupInfo></GroupInfo>
+                <GroupInfo confirmCallback={() => this.toggleInfo()}></GroupInfo>
                 : null
         }
       </div>
