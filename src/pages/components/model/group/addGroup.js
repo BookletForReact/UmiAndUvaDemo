@@ -1,7 +1,7 @@
 // 添加好友
 import { Modal, Checkbox, message } from 'antd'
 import React from 'react'
-import API from '@/network/api'
+// import API from '@/network/api'
 import './addGroup.scss'
 
 class AddGroup extends React.Component {
@@ -23,7 +23,6 @@ class AddGroup extends React.Component {
             'id': 'slEcpCI63',
             'nickname': '一杯水',
             'region': '86',
-            'phone': '13269772766',
             'portraitUri': 'http://7xogjk.com1.z0.glb.clouddn.com/Fo6wxS7zzvGpwyAFhlpTUVirpOGh',
             'gender': 'male', // 性别
             'stAccount': 'b323422', // SealTalk 号
@@ -39,7 +38,6 @@ class AddGroup extends React.Component {
             'id': '123456',
             'nickname': '一杯水',
             'region': '86',
-            'phone': '13269772766',
             'portraitUri': 'http://7xogjk.com1.z0.glb.clouddn.com/Fo6wxS7zzvGpwyAFhlpTUVirpOGh',
             'gender': 'male', // 性别
             'stAccount': 'b323422', // SealTalk 号

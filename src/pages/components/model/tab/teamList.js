@@ -2,7 +2,6 @@
 import { connect } from 'dva'
 import React from 'react'
 import Item from './item.js'
-import API from '@/network/api'
 import AddGroup from '../group/addGroup.js'
 
 class TeamList extends React.Component {

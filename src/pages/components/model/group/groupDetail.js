@@ -1,6 +1,6 @@
 // 聊天框
 import { connect } from 'dva'
-import { message, Input, Radio, Icon } from 'antd'
+import { message, Input, Radio } from 'antd'
 import React from 'react'
 import API from '@/network/api'
 import './groupDetail.scss'
@@ -43,7 +43,7 @@ class GroupDetail extends React.Component {
 
     // 获取群信息
     getGroupInfo = async () => {
-        const { groupId } = this.props
+        // const { groupId } = this.props
         const { code, result } = this.state.mockData // await API.getGroupInfo(groupId)
         if (code === 200) {
             this.setState({
@@ -73,7 +73,7 @@ class GroupDetail extends React.Component {
         return (
             <div className="group-info-detail">
                 <div className="group-info-row with-img">
-                    <img className="img" src={info.portraitUri || defaultUrl} />
+                    <img className="img" src={info.portraitUri || defaultUrl} alt="img" />
                     <span>{info.creatorId}</span>
                 </div>
                 <div className="group-info-row">

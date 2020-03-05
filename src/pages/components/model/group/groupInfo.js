@@ -7,7 +7,7 @@ import GroupDetail from './groupDetail'
 export default class GroupInfo extends React.Component {
     constructor(props) {
         super(props)
-     }
+    }
 
     toPrev = () => {
         this.props.confirmCallback()

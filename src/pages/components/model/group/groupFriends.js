@@ -156,7 +156,7 @@ class GroupFriends extends React.Component {
                 {
                     friendList.map((item, index) => (
                         <div className="friend-item" key={index} onMouseOver={() => this.mouseOverFn(item, index)} onMouseLeave={() => this.resetList()}>
-                            <img className="img" src={item.user.portraitUri || defaultUrl} />
+                            <img className="img" src={item.user.portraitUri || defaultUrl} alt="img"/>
                             <span className="nick-name">{item.user.nickname}</span>
                             {
                                 item.role === 0 ? <i className="icon radius-circle icon-user"></i> : null

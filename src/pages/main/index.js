@@ -12,7 +12,6 @@ class Main extends React.Component {
     }
 
     componentDidMount () {
-        console.log('componentDidMount');
         this.props.dispatch({type: 'user/info'});
         this.getUserInfo();
     }

@@ -4,10 +4,22 @@ import './tab.scss'
 
 export default function Item(props) {
   const { data, itemClick } = props
+  // 日期时间输出
+  const getDate = (time) => {
+    const date = dayjs(time).format('YYYY-MM-DD')
+    const nowDate = dayjs().format('YYYY-MM-DD')
+    if (date === nowDate) return dayjs(time).format('HH:mm')
+    return date
+  }
+
+  const itemClickHandle = () => {
+    itemClick && itemClick()
+  }
+
   return (
-    <div className="tab_list-item" onClick={itemClick}>
+    <div className={data.selected ? 'tab_list-item tab_list-item_selected' : 'tab_list-item'} onClick={itemClickHandle}>
       <div className="tab_list-item_icon">
-        <img src={data.avatar} />
+        <img src={data.avatar} alt="img" />
       </div>
       <div className="tab_list-item_text">
         {
@@ -24,7 +36,7 @@ export default function Item(props) {
                     {data.nick}
                   </span>
                   <span className="tab_list-item_time">
-                    {dayjs(data.time).format('HH:mm')}
+                    { getDate(data.time) }
                   </span>
                 </div>
                 <div className="tab_list-item_desc">
