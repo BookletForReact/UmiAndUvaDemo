@@ -1,6 +1,8 @@
 import React from 'react'
-import Item from './item.js'
 import {connect} from 'dva'
+import Item from './item.js'
+import { setLongScrollTop } from '../config'
+
 const namespace = 'chat'
 
 class SessionList extends React.Component {
@@ -10,22 +12,20 @@ class SessionList extends React.Component {
         nick: '消息中心',
         type: 'single',
         avatar: require('@/assets/images/notice.png'),
-        onClick () {
-        }
       },
       {
-        id: 2,
+        id: 1,
         nick: 'web讨论组',
         time: 1582455895563,
         desc: '这是一些测试内容',
         avatar: 'https://app.yunxin.163.com/webdemo/im/images/advanced.png'
       },
       {
-        id: 3,
+        id: 2,
         nick: '默认好友',
         time: 1583311345031,
         desc: '[离线]...',
-        avatar: require('@/assets/images/default-icon.png')
+        avatar: 'https://app.yunxin.163.com/webdemo/im/images/default-icon.png'
       }
     ]
   }
@@ -39,7 +39,10 @@ class SessionList extends React.Component {
       return v
     })
     this.setState({ sessionData: _data })
+    this.props.dispatch({ type: `${namespace}/setCurrentMessage`, payload: item })
+    setLongScrollTop()
   }
+
   render() {
     const { sessionData } = this.state
     return (

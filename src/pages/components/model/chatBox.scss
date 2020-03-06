@@ -3,11 +3,11 @@
     position: relative;
     width: 710px;
     height: 100%;
-    // background: url(../../../assets/images/bg_page.png) no-repeat;
     position: relative;
     top: -72px;
     margin-left: 38px;
     background-color: #fff;
+    font-family: Tahoma;
     &-title {
       display: flex;
       height: 81px;
@@ -20,10 +20,17 @@
       margin-left: 15px;
     }
     &-title_avatar {
-
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      overflow: hidden;
+      img {
+        width: 100%;
+      }
     }
     &-title_name {
-
+      line-height: 56px;
+      margin-left: 10px;
     }
     &-team_info {
       width: 68px;
@@ -45,9 +52,127 @@
       top: 81px;
       bottom: 60px;
       width: 100%;
+      padding: 20px;
       overflow-y: auto;
-      background-color: #ccc;
       text-align: left;
+    }
+    &-item_other {
+      display: flex;
+      padding: 4px 0px 10px 0px;
+    }
+    &-item_message {
+      position: relative;
+      display: inline-block;
+      max-width: 316px;
+      padding: 7px 12px;
+      line-height: 1.7em;
+      margin-top: 5px;
+      border-radius: 8px;
+      border-color: #eee;
+      &::before {
+        content: ' ';
+        position: absolute;
+        top: 11px;
+        border-top: 5px solid transparent;
+        border-bottom: 5px solid transparent;
+        width: 0;
+        height: 0;
+      }
+    }
+    &-item_avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      overflow: hidden;
+      img {
+        width: 100%;
+      }
+    }
+    &-item_other_text {
+      margin-left: 10px;
+      padding-top: 5px;
+    }
+    &-item_other_message {
+      color: #6b8299;
+      background: #eaeeef;
+      &::before {
+        right: 100%;
+        border-right: 5px solid #eaeeef;
+      }
+    }
+    &-item_self {
+      display: flex;
+      padding: 4px 0px 10px 0px;
+      justify-content: flex-end;
+    }
+    &-item_self_text {
+      margin-right: 10px;
+    }
+    &-item_self_message {
+      color: #fff;
+      background: #5cacde;
+      &::before {
+        left: 100%;
+        border-left: 5px solid #5cacde;
+      }
+    }
+    // footer
+    &-footer {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      display: flex;
+      height: 60px;
+      width: 100%;
+      padding: 0 15px;
+      background-color: #e5f4ff;
+    }
+    &-emoji_wrap {
+      flex: 0 0 50px;
+      margin-top: 10px;
+      cursor: pointer;
+    }
+    &-emoji {
+      display: inline-block;
+      width: 30px;
+      height: 30px;
+      background: url('~@/assets/images/icons.png') no-repeat center;
+      background-position: 2px -187px;
+    }
+    &-input_wrap {
+      flex: 1;
+    }
+    &-input {
+      width: 100%;
+      height: 38px;
+      outline: none;
+      background: #fff;
+      border: none;
+      border: 1px solid #ccc;
+      border: 1px solid #ccc;
+      overflow-y: auto;
+      padding: 6px 10px;
+      margin-top: 10px;
+      border-radius: 5px;
+    }
+    &-btn_wrap {
+      flex: 0 0 100px;
+    }
+    &-btn {
+      background-color: #0888ff;
+      color: #fff;
+      display: inline-block;
+      width: 70px;
+      height: 34px;
+      line-height: 34px;
+      text-align: center;
+      position: absolute;
+      top: 11px;
+      right: 15px;
+      font-size: 12px;
+      border: 1px solid #0070d9;
+      border-radius: 5px;
+      cursor: pointer;
     }
   }
 }
